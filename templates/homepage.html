@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <title>أبجد - موقع قصص الأطفال</title>
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', sans-serif;
+            direction: rtl;
+        }
+
+        header {
+            width: 100%;
+            background-color: white;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            direction: rtl;
+            border-bottom: 2px solid #4075ba;
+
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        nav a {
+            color: #4075ba;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #fac926;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 400px;
+            width: 80%;
+            position: relative;
+        }
+
+        .close-button {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            cursor: pointer;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("/static/homepage-bg.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        #welcome-page {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: right;
+            padding-right: 100px;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .welcome-content {
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #4075ba;
+            font-size: 2.5em;
+        }
+
+        p {
+            color: #7dbe9b;
+            font-size: 1.5em;
+        }
+
+        button {
+            margin-top: 25px;
+            background-color: #e0e2e0;
+            border: 2px solid #0f3a1d;
+            border-radius: 30px;
+            box-shadow: #f667bf 4px 4px 0 0;
+            color: #090909;
+            cursor: pointer;
+            display: inline-block;
+            font-weight: 600;
+            font-size: 18px;
+            padding: 0 20px;
+            line-height: 40px;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+        }
+
+        button:hover {
+            background-color: #edf1ed;
+        }
+
+        button:active {
+            box-shadow: #e0e2e0 2px 2px 0 0;
+            transform: translate(2px, 2px);
+        }
+
+        #abjjad {
+            height: 200px;
+            width: 200px;
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
+
+    <!-- Header with Navigation Links -->
+    <header>
+        <nav>
+            <a href="/">الصفحة الرئيسية</a>
+            <a href="#" id="about-link">من نحن</a>
+            <a href="/generate_page">أبجد</a>
+        </nav>
+    </header>
+
+    <!-- About Us Modal -->
+
+    <div id="about-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <p>نحن فتيات سعوديات قمنا بتطوير أبجد!</p>
+        </div>
+    </div>
+
+    <!-- Background Image -->
+    <div class="background"></div>
+
+    <!-- Welcome Page Content -->
+    <div id="welcome-page">
+        <div class="welcome-content">
+            <h1>أهلاً بك في عالم أبجد!</h1>
+            <img src="/static/abjad.jpg" alt="Abjjad Image" id="abjjad">
+            <p><span class="text"></span></p>
+            <a href="/generate_page">
+                <button>ابدأ القصة</button>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        var typed = new Typed(".text", {
+            strings: ["هل أنت مستعد للمغامرات الشيقة؟", "هل أنت مستعد للتعلم الذكي؟"],
+            typeSpeed: 100,
+            backSpeed: 100,
+            backDelay: 1000,
+            loop: true
+        });
+
+        // Modal functionality
+        const aboutModal = document.getElementById("about-modal");
+        const aboutLink = document.getElementById("about-link");
+        const closeButton = document.querySelector(".close-button");
+
+        aboutLink.onclick = function (event) {
+            event.preventDefault();
+            aboutModal.style.display = "flex";
+        }
+
+        closeButton.onclick = function () {
+            aboutModal.style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            if (event.target === aboutModal) {
+                aboutModal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>
